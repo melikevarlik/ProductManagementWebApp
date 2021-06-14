@@ -1,0 +1,25 @@
+﻿
+Microsoft Visual Studio Solution File, Format Version 12.00
+# Visual Studio Version 16
+VisualStudioVersion = 16.0.31205.176
+MinimumVisualStudioVersion = 10.0.40219.1
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "KocDigital", "KocDigital\KocDigital.csproj", "{0E495A27-DF41-4FFE-AEF2-4B89CD2A7AEB}"
+EndProject
+Global
+	GlobalSection(SolutionConfigurationPlatforms) = preSolution
+		Debug|Any CPU = Debug|Any CPU
+		Release|Any CPU = Release|Any CPU
+	EndGlobalSection
+	GlobalSection(ProjectConfigurationPlatforms) = postSolution
+		{0E495A27-DF41-4FFE-AEF2-4B89CD2A7AEB}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{0E495A27-DF41-4FFE-AEF2-4B89CD2A7AEB}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{0E495A27-DF41-4FFE-AEF2-4B89CD2A7AEB}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{0E495A27-DF41-4FFE-AEF2-4B89CD2A7AEB}.Release|Any CPU.Build.0 = Release|Any CPU
+	EndGlobalSection
+	GlobalSection(SolutionProperties) = preSolution
+		HideSolutionNode = FALSE
+	EndGlobalSection
+	GlobalSection(ExtensibilityGlobals) = postSolution
+		SolutionGuid = {A1B3868B-9691-4D18-840A-B0B0029C291D}
+	EndGlobalSection
+EndGlobal

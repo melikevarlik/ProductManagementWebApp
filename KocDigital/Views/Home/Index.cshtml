@@ -1,0 +1,120 @@
+﻿@{
+    ViewData["Title"] = "Home Page";
+}
+
+
+<a href="~/js/jquery-3.6.0.min.map"></a>
+<script src="~/js/site.js"></script>
+<script src="~/js/jquery.js"></script>
+<script src="~/js/jquery-3.2.1.min.js"></script>
+<link href="~/css/mycss.css" rel="stylesheet" />
+<script src="https://maxcdn.bootstrapcdn.com/bootstrap/3.4.1/js/bootstrap.min.js"></script>
+
+<h3>Product List</h3>
+
+<div class="input-group">
+    <input class="form-control border-end-0 border rounded-pill" type="text"  id="myInput" onkeyup="myFunction()" placeholder="Search for name...">
+    
+</div>
+@*<div>
+    <input type="search" id="myInput" onkeyup="myFunction()" placeholder="Search for product names ..."  />
+   
+</div>*@
+
+<div class="panel panel-primary">
+    @*<div class="panel-heading">
+           Product List
+        </div>*@
+    <div class="panel-body">
+        <table class="table table-bordered" id="Table" data-filter-control="true"  data-show-search-clear-button="true">
+            <tr>
+                <th>Product Code</th>
+                <th>Product Name</th>
+                <th>Product Description</th>
+                <th>Product Price</th>
+                <th>Product Stock</th>
+            </tr>
+        </table>
+    </div>
+</div>
+
+
+<script type="text/javascript">
+    $(document).ready(function () {
+        manager.getallproduct();
+
+    })
+
+    var manager = {
+        getallproduct: function () {
+            var obj = "";
+            var serviceurl = "https://localhost:44316/api/Product/getallproduct";
+            window.manager.getapi(serviceurl, onSuccess, onFailed);
+            function onSuccess(jsonData) {
+                debugger;
+                obj = jsonData;
+                $.each(jsonData, function (i, item) {
+                    var rows = "<tr> id='myid'" +
+                        "<td id='productID'>" + item.productID + "</td>" +
+                        "<td id='productName'>" + item.productName + "</td>" +
+                        "<td id='productDescription'>" + item.productDescription + "</td>" +
+                        "<td id='productPrice'>" + item.productPrice + "</td>" +
+                        "<td id='productStock'>" + item.productStock + "</td>" +
+                        "</tr>";
+                    $('#Table').append(rows);
+                });
+            }
+            function onFailed(error) {
+                window.alert(error.statusText);
+            }
+            return obj;
+        },
+
+        getapi: function (serviceurl, successCallback, errorCallback) {
+            $.ajax({
+                type: "GET",
+                url: serviceurl,
+                dataType: "json",
+                success: successCallback,
+                error: errorCallback
+
+            });
+        }
+    }
+</script>
+
+@*<script>
+    $(document).ready(function () {
+        $("#myInput").on("keyup", function () {
+            var value = $(this).val().toLowerCase();
+            $("#Table").filter(function () {
+                $(this).toggle($(this).text().toLowerCase().indexOf(value) > -1)
+            });
+        });
+    });
+</script>*@
+
+
+<script>
+    function myFunction() {
+        // Declare variables
+        var input, filter, table, tr, td, i, txtValue;
+        input = document.getElementById("myInput");
+        filter = input.value.toUpperCase();
+        table = document.getElementById("Table");
+        tr = table.getElementsByTagName("tr");
+
+        // Loop through all table rows, and hide those who don't match the search query
+        for (i = 0; i < tr.length; i++) {
+            td = tr[i].getElementsByTagName("td")[1];           
+            if (td) {
+                txtValue = td.textContent || td.innerText;
+                if (txtValue.toUpperCase().indexOf(filter) > -1) {
+                    tr[i].style.display = "";
+                } else {
+                    tr[i].style.display = "none";
+                }
+            }           
+        }
+    }
+</script>
